@@ -1,6 +1,9 @@
+<van-sticky>
+
 <view>
-  <view class="search">
+  <view class="search" style="height={{navHeight}}px;padding-top:{{navTop}}px">
     <view class="search-title">天使童装</view>
-    <input class="search-input" type="text" placeholder="输入关键词搜索"></input>
+    <input placeholder-class="search-placeholder" class="search-input" type="text" placeholder="输入关键词搜索"></input>
   </view>
 </view>
+</van-sticky>
