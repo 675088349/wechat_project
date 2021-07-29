@@ -1,4 +1,7 @@
 // app.js
+const WXAPI = require('apifm-wxapi')
+const CONFIG = require('config.js')
+
 App({
   onLaunch() {
     // 展示本地存储能力
@@ -13,11 +16,29 @@ App({
       }
     })
 
+    wx.removeStorageSync('appid')
+    wx.removeStorageSync('componentAppid')
+    const subDomain = wx.getExtConfigSync().subDomain
+    const componentAppid = wx.getExtConfigSync().componentAppid
+    if (componentAppid) {
+      wx.setStorageSync('appid', wx.getAccountInfoSync().miniProgram.appId)
+      wx.setStorageSync('componentAppid', componentAppid)
+    }
+
+    console.log('yuming', subDomain)
+    if (subDomain) {
+      WXAPI.init(subDomain)
+    } else {
+      WXAPI.init(CONFIG.subDomain)
+      WXAPI.setMerchantId(CONFIG.merchantId)
+    }
+
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();
     console.log("小程序胶囊信息",menuButtonObject)
 
     wx.getSystemInfo({
       success: (res) => {
+        console.log("res", res)
         let statusBarHeight = res.statusBarHeight,
           navTop = menuButtonObject.top,//胶囊按钮与顶部的距离
           navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight)*2;//导航高度
@@ -25,7 +46,9 @@ App({
         this.globalData.navTop = navTop;
         this.globalData.windowHeight = res.windowHeight;
         this.globalData.menuButtonObject = menuButtonObject;
+        console.log("navTop",navTop);
         console.log("navHeight",navHeight);
+
       },
       fail(err) {
         console.log(err);

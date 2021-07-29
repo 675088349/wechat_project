@@ -1,9 +1,15 @@
-<van-sticky>
-
 <view>
   <view class="search" style="height={{navHeight}}px;padding-top:{{navTop}}px">
     <view class="search-title">天使童装</view>
     <input placeholder-class="search-placeholder" class="search-input" type="text" placeholder="输入关键词搜索"></input>
   </view>
 </view>
-</van-sticky>
+
+<swiper class="banner-swiper">
+  <block wx:for="{{banners}}">
+    <swiper-item class="banner-item">
+      <image class="banner-item-img" data-url="{{item.picUrl}}"></image>
+      <view>{{item.picUrl}}</view>
+    </swiper-item>
+  </block>
+</swiper>
