@@ -1,15 +1,46 @@
-<view>
-  <view class="search" style="height={{navHeight}}px;padding-top:{{navTop}}px">
+<van-sticky>
+<view class="search" style="height:{{navHeight}}px;padding-top:{{navTop}}px">
     <view class="search-title">天使童装</view>
     <input placeholder-class="search-placeholder" class="search-input" type="text" placeholder="输入关键词搜索"></input>
+</view>
+</van-sticky>
+
+<view class="swiper-container">
+  <swiper class="banner-swiper" indicator-dots="true" indicator-active-color="#fff" autoplay circular>
+    <block wx:for="{{banners}}">
+      <swiper-item class="banner-item">
+        <image class="banner-item-img" mode="aspectFill" src="{{item.picUrl}}"></image>
+        <view>{{item.picUrl}}</view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="bottom-swiper-bg">
+    <swiper class="bottom-swiper" autoplay circular vertical>
+      <block wx:for="{{goodsDynamic}}">
+        <swiper-item class="bottom-swiper-item">
+          <image class="bottom-avator" src="{{item.avatarUrl}}"></image>
+          <text class="bottom-des">{{item.nick}} 购买了 {{item.goodsName}}</text>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
 </view>
 
-<swiper class="banner-swiper">
-  <block wx:for="{{banners}}">
-    <swiper-item class="banner-item">
-      <image class="banner-item-img" data-url="{{item.picUrl}}"></image>
-      <view>{{item.picUrl}}</view>
-    </swiper-item>
+<view class="category-container">
+ <view class="category-box">
+  <block wx:for="{{categories}}">
+    <view class="category-column">
+      <image  mode="aspectFill" src="{{item.icon}}"></image>
+      <view>{{item.name}}</view>
+    </view>
   </block>
-</swiper>
+ </view>
+</view>
+
+<view class="notice-box" wx:if="{{noticeList}}">
+  <swiper class="notice_swiper" vertical autoplay circular interval="8000">
+    <swiper-item wx:for="{{noticeList.dataList}}">
+      <text style="font-size: 14">{{ item.title }}</text>
+    </swiper-item>
+  </swiper>
+</view>

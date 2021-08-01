@@ -1,4 +1,7 @@
 {
-  "enablePullDownRefresh": false,
-  "navigationStyle": "custom"
+
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "navigation",
+  "enablePullDownRefresh": true
+
 }
