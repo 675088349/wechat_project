@@ -110,7 +110,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 10rpx 20rpx 40rpx 20rpx;
-  position: inherit;
+  position: block;
 }
 
 .category-column {
@@ -134,16 +134,137 @@
 .notice-box {
   background-color: white;
   width: 100%;
-  height: 88rpx;
+  height: 78rpx;
   position: relative;
 }
 
 .notice_swiper {
-  padding: 10rpx 40rpx;
-  background-color: white;
   color: red;
+  height: 78rpx;
+  position: relative;
+}
+
+.notice_swiper swiper-item {
+  position: relative;
+  height: 100%;
 }
 
 .notice_swiper swiper-item text {
   font-size: 30rpx;
+  padding-left: 40rpx;
+  margin-top: 20rpx;
+  height: 78rpx;
+  display: block;
+}
+
+.container-bottom {
+  margin-top: 30rpx;
+  position: relative;
+}
+
+.goods-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-sizing: content-box;
+  padding: 0 24rpx;
+  /* padding-left: 20rpx; */
+  background-color: white;
+  padding-top: 30rpx;
+  padding-bottom: 20rpx;
+}
+
+.goods-box {
+  width: 339rpx;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 24rpx;
+  border-radius: 5px;
+  border: 1px solid #D1D1D1;
+  padding-bottom: 10rpx;
+}
+
+.image {
+  width: 339rpx;
+  height: 339rpx;
+}
+
+.goods-title {
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  font-size: 24rpx;
+}
+
+.goods-price {
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+  color: red;
+}
+
+.kanjia-container {
+  margin-top: 30rpx;
+  background-color: white;
+  padding: 30rpx 0 20rpx;
+}
+
+.kanjia-box {
+  display: flex;
+  position: relative;
+  padding: 20rpx 0;
+}
+
+.img-box {
+  width: 180rpx;
+  height: 180rpx;
+  margin-left: 30rpx;
+}
+
+.goods-image-kanjia {
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.right-bg {
+  padding: 0 10rpx;
+  /*  flex-wrap: wrap; */
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.goods-title {
+  font-size: 29rpx;
+  text-align: left;
+  word-wrap: break-word;
+  padding: 0;
+}
+
+.goods-des {
+  font-size: 25rpx;
+  word-wrap: break-word;
+}
+
+.kanjia-press {
+  height: 10rpx;
+  width: 100%;
+  background-color: red;
+}
+
+.kanjia-price {
+  display: flex;
+  align-items:flex-end;
+}
+
+.price-min {
+  color: red;
+  font-size: 30rpx;
+}
+
+.price-max {
+  font-size: 25rpx;
+  margin-left: 20rpx;
 }

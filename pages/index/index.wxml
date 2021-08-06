@@ -44,3 +44,36 @@
     </swiper-item>
   </swiper>
 </view>
+
+<view class="container-bottom">
+  <view class="goods-container">
+    <block wx:for="{{goodsRecommend}}">
+      <view class="goods-box">
+        <image class="image" src="{{item.pic}}"></image>
+        <view class="goods-title">{{item.name}}</view>
+        <view class="goods-price">$ {{item.minPrice}}</view>
+      </view>
+    </block>
+  </view>
+
+  <view class="kanjia-container">
+    <block wx:for="{{kanjiaList}}">
+      <view class="kanjia-box">
+        <view class="img-box">
+          <image class="goods-image-kanjia" src="{{item.pic}}"></image>
+        </view>
+        <view class="right-bg">
+          <view class="goods-title">{{item.name}}</view>
+          <view class="goods-des">{{item.characteristic}}</view>
+
+          <view class="kanjia-press"></view>
+          <view class="kanjia-price">
+            <view class="price-min">￥{{item.kanjiaPrice}}</view>
+            <view class="price-max">￥{{item.originalPrice}}</view>
+          </view>
+        </view>
+ 
+      </view>
+    </block>
+  </view>
+</view>

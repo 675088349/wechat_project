@@ -16,6 +16,18 @@ Page({
     this.goodsDynamic();
     this.categories();
     this.getNotice();
+
+    WXAPI.goods({
+      recommendStatus: 1
+    }).then(res=> {
+      if(res.code == 0) {
+        this.setData({
+          goodsRecommend: res.data
+        })
+      }
+    })
+
+    this.kanjiaGoods();
   },
 
   getNotice () {
@@ -28,6 +40,38 @@ Page({
         console.log ('noticeList', res.data)
       }
     })
+  },
+
+  async kanjiaGoods () {
+    const res = await WXAPI.goods({
+      kanjia: true
+    }) 
+
+    const kanjiaGoodsIds = []
+
+    if (res.code == 0) {
+      res.data.forEach(element => {
+        kanjiaGoodsIds.push(element.id)
+      });
+    }
+    console.log('kanjiaGoodsIds', kanjiaGoodsIds)
+
+    const goodsKanjiaSetRes = await WXAPI.kanjiaSet(kanjiaGoodsIds.join()) 
+    console.log('goodsKanjiaSetRes', goodsKanjiaSetRes.data)
+    if (goodsKanjiaSetRes.code == 0) {
+      res.data.forEach(elt => {
+        const _process = goodsKanjiaSetRes.data.find(_set => {
+          return _set.goodsId == elt.id
+        })
+        if(_process) {
+          elt.process = 100 * _process.numberBuy / _process.number
+          elt.process = elt.process.toFixed(0)
+        }
+      })
+      this.setData({
+        kanjiaList: res.data
+      })
+    }
   },
 
   async categories() {
