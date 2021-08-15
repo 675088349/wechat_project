@@ -58,22 +58,48 @@
 
   <view class="kanjia-container">
     <block wx:for="{{kanjiaList}}">
-      <view class="kanjia-box">
-        <view class="img-box">
-          <image class="goods-image-kanjia" src="{{item.pic}}"></image>
-        </view>
-        <view class="right-bg">
-          <view class="goods-title">{{item.name}}</view>
-          <view class="goods-des">{{item.characteristic}}</view>
+      <view class="kanjia-bg">
+        <view class="kanjia-box">
+          <view class="img-box">
+            <image class="goods-image-kanjia" src="{{item.pic}}"></image>
+          </view>
+          <view class="right-bg">
+            <view class="goods-title">{{item.name}}</view>
+            <view class="goods-des">{{item.characteristic}}</view>
 
-          <view class="kanjia-press"></view>
-          <view class="kanjia-price">
-            <view class="price-min">￥{{item.kanjiaPrice}}</view>
-            <view class="price-max">￥{{item.originalPrice}}</view>
+            <view class="kanjia-press"></view>
+            <view class="kanjia-price">
+              <view class="price-min">￥{{item.kanjiaPrice}}</view>
+              <view class="price-max">￥{{item.originalPrice}}</view>
+            </view>
           </view>
         </view>
- 
+        <view class="btn-bg">
+          <button class="kjbtn" style="width: 150rpx">砍价</button>
+        </view>
       </view>
     </block>
   </view>
+
+  <view class="tuan">
+    <block wx:for="{{pingtuanList}}">
+      <view class="tuan-box">
+        <view class="tuan-image-bg">
+          <image src="{{item.pic}}"  mode="aspectFill" >
+          </image>
+        </view>
+        <view class="tuan-des">
+          <view class="tuan-goods-title">{{item.name}}</view>
+          <view class="tuan-goods-des">{{item.characteristic}}</view>
+          <view class="tuan-tags" wx:if="{{item.tags}}">{{item.tags}}</view>
+        </view>
+        <view class="tuan-bottom">
+          <view class="tuan-goods-min-prices">￥ {{item.pingtuanPrice}}</view>
+          <view class="tuan-goods-max-prices">￥ {{item.originalPrice}}</view>
+          <button size="mini" type="warn">拼团</button>
+        </view>
+      </view>
+    </block>
+  </view>
+
 </view>

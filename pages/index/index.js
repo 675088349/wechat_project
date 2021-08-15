@@ -16,6 +16,7 @@ Page({
     this.goodsDynamic();
     this.categories();
     this.getNotice();
+    this.pingtuanGoods();
 
     WXAPI.goods({
       recommendStatus: 1
@@ -28,6 +29,19 @@ Page({
     })
 
     this.kanjiaGoods();
+  },
+
+  pingtuanGoods () {
+    var _this = this;
+    WXAPI.goods({
+      pingtuan: true
+    }).then(res=>{
+      if(res.code == 0) {
+        _this.setData({
+          pingtuanList: res.data
+        })
+      }
+    })
   },
 
   getNotice () {
